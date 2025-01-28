@@ -26,6 +26,7 @@ const songs = [
   // Feel free to add even more songs
 ];
 
+//created a new songs array with my 5 songs to be added to the list
 const songsToAdd = [
   {
     title: "Come a Little Bit Closer",
@@ -42,8 +43,9 @@ const songsToAdd = [
   { title: "Baas Vannie Plaas", artist: "Loufi", genre: "Rap" },
 ];
 
+//using concat() I have combined my array of songs to the original array and made a new array called newPlaylist
 const newPlayList = songs.concat(songsToAdd);
-console.log(newPlayList);
+//console.log(newPlayList);
 
 // Object containing each Guardian's preferred genre
 const guardians = {
@@ -51,6 +53,12 @@ const guardians = {
   Gamora: "Pop",
   // Add preferences for Drax, Rocket, and Groot
 };
+
+//adding other guardians to the guardians object
+guardians.Drax = "Rap";
+guardians.Rocket = "Rock";
+guardians.Groot = "R&B";
+//console.log(guardians);
 
 // Function to generate playlist based on preferred genre
 function generatePlaylist(guardians, songs) {
