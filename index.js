@@ -45,7 +45,7 @@ const songsToAdd = [
 
 //using concat() I have combined my array of songs to the original array and made a new array called newPlaylist
 const newPlayList = songs.concat(songsToAdd);
-//console.log(newPlayList);
+console.log(newPlayList);
 
 // Object containing each Guardian's preferred genre
 const guardians = {
@@ -58,11 +58,34 @@ const guardians = {
 guardians.Drax = "Rap";
 guardians.Rocket = "Rock";
 guardians.Groot = "R&B";
-//console.log(guardians);
-
+console.log(guardians);
+//console.log(guardians["Star-Lord"]);
 // Function to generate playlist based on preferred genre
-function generatePlaylist(guardians, songs) {
+
+const playlistsDiv = document.getElementById("playlists");
+
+function generatePlaylist(guardians, newPlayList) {
   // Use the map() function to create playlists for each Guardian
+
+  const starlordFilter = newPlayList.filter(
+    (song) => song.genre === guardians["Star-Lord"]
+  );
+  //console.log(starlordFilter);
+  const starlordPlaylist = starlordFilter.map(
+    (song) => `${song.title} by ${song.artist}`
+  );
+  console.log(starlordPlaylist);
+  // const starlord = newPlayList.map((song) =>
+  //  song.genre === guardians["Star-Lord"] ? `${song.title} ${song.artist}`)
+  // ;
+
+  //   if (song.genre == guardians["Star-Lord"]) {
+  return starlordPlaylist;
+  //   } else {
+  //   }
+  // });
+  // console.log(starlord);
+
   // Your code here
 }
 
