@@ -66,15 +66,16 @@ function generatePlaylist(guardians, newPlayList) {
     const individualDiv = document.createElement("div");
     individualDiv.classList.add("playlist");
     playlistsDiv.appendChild(individualDiv);
-    const guardianHeading = document.createElement("h3");
+    const guardianHeading = document.createElement("h2");
     guardianHeading.textContent = `${name}'s Playlist`;
     individualDiv.appendChild(guardianHeading);
     const ul = document.createElement("ul");
+    //ul.style.listStyle = none;
 
     newPlayList.map((song) => {
       if (song.genre === guardians[name]) {
         const songList = document.createElement("li");
-        songList.textContent = `${song.title} by ${song.artist}`;
+        songList.innerHTML = `<span class="song-title">${song.title}</span> by ${song.artist}`;
         ul.appendChild(songList);
       } else {
       }
