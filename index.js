@@ -70,7 +70,6 @@ function generatePlaylist(guardians, newPlayList) {
     guardianHeading.textContent = `${name}'s Playlist`;
     individualDiv.appendChild(guardianHeading);
     const ul = document.createElement("ul");
-    //ul.style.listStyle = none;
     individualDiv.appendChild(ul);
 
     newPlayList.map((song) => {
