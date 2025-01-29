@@ -71,6 +71,7 @@ function generatePlaylist(guardians, newPlayList) {
     individualDiv.appendChild(guardianHeading);
     const ul = document.createElement("ul");
     //ul.style.listStyle = none;
+    individualDiv.appendChild(ul);
 
     newPlayList.map((song) => {
       if (song.genre === guardians[name]) {
@@ -80,8 +81,6 @@ function generatePlaylist(guardians, newPlayList) {
       } else {
       }
     });
-
-    individualDiv.appendChild(ul);
   }
 
   //console.log(Object.values(guardians));
@@ -90,3 +89,8 @@ function generatePlaylist(guardians, newPlayList) {
 
 // Call generatePlaylist and display the playlists for each Guardian
 generatePlaylist(guardians, newPlayList);
+
+const allPlaylists = document.querySelectorAll("ul");
+allPlaylists.forEach((ul) => {
+  ul.style.listStyle = "none";
+});
