@@ -51,54 +51,40 @@ const newPlayList = songs.concat(songsToAdd);
 const guardians = {
   "Star-Lord": "Rock",
   Gamora: "Pop",
+  Drax: "Rap",
+  Rocket: "Rock",
+  Groot: "R&B",
   // Add preferences for Drax, Rocket, and Groot
 };
-
-//adding other guardians to the guardians object
-guardians.Drax = "Rap";
-guardians.Rocket = "Rock";
-guardians.Groot = "R&B";
-//console.log(guardians);
-//console.log(guardians["Star-Lord"]);
-// Function to generate playlist based on preferred genre
 
 const playlistsDiv = document.getElementById("playlists");
 
 function generatePlaylist(guardians, newPlayList) {
+  //create divs for each guardian
+
+  for (let name in guardians) {
+    const individualDiv = document.createElement("div");
+    individualDiv.classList.add("playlist");
+    playlistsDiv.appendChild(individualDiv);
+    const guardianHeading = document.createElement("h3");
+    guardianHeading.textContent = `${name}'s Playlist`;
+    individualDiv.appendChild(guardianHeading);
+    const ul = document.createElement("ul");
+
+    newPlayList.map((song) => {
+      if (song.genre === guardians[name]) {
+        const songList = document.createElement("li");
+        songList.textContent = `${song.title} by ${song.artist}`;
+        ul.appendChild(songList);
+      } else {
+      }
+    });
+
+    individualDiv.appendChild(ul);
+  }
+
+  //console.log(Object.values(guardians));
   // Use the map() function to create playlists for each Guardian
-
-  //used filter to remove the songs that dont fit into guardians genre
-  const starlordFilter = newPlayList.filter(
-    (song) => song.genre === guardians["Star-Lord"]
-  );
-  //console.log(starlordFilter);
-  //use map to make an array of the titles and artists
-  const starlordPlaylist = starlordFilter.map(
-    (song) => song.title + song.artist
-  );
-  //console.log(starlordPlaylist);
-  console.log(starlordPlaylist);
-  const listEl = document.createElement("ul");
-  playlistsDiv.appendChild(listEl);
-  listEl.classList.add("playlist");
-
-  starlordPlaylist.forEach((song) => {
-    const li = document.createElement("li");
-    li.textContent = `${song.title} by ${song.artist}`;
-    console.log(starlordPlaylist);
-    //const titleSpan = document.createElement("span");
-    // titleSpan.classList.add("song-title");
-    //titleSpan.textContent = song.title;
-
-    // const artistSpan = document.createElement("span");
-    // artistSpan.textContent = song.artist;
-
-    // li.appendChild(titleSpan);
-    // li.appendChild(artistSpan);
-    listEl.appendChild(li);
-  });
-  return starlordPlaylist;
-  //console.log(starlordPlaylist);
 }
 
 // Call generatePlaylist and display the playlists for each Guardian
