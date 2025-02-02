@@ -60,8 +60,8 @@ const guardians = {
 const playlistsDiv = document.getElementById("playlists");
 
 function generatePlaylist(guardians, newPlayList) {
-  //create divs for each guardian
-
+  //Using a for in loop we are tageting the key in the guaddians object.
+  // for each we are creating a div, heading and ul element that are appended to the html.
   for (let name in guardians) {
     const individualDiv = document.createElement("div");
     individualDiv.classList.add("playlist");
@@ -72,23 +72,25 @@ function generatePlaylist(guardians, newPlayList) {
     const ul = document.createElement("ul");
     individualDiv.appendChild(ul);
 
+    // I am using the .map() method to filter out the songs in the playlist that match the guardians genre.
+    // it creates a new array with just the song title and song artist.
+    // I havent used the original song array, I have used the updated one where I concacted the original with my list.
+    // in the map() we also create li elements for each, add text content, and apend.
     newPlayList.map((song) => {
       if (song.genre === guardians[name]) {
         const songList = document.createElement("li");
-        songList.innerHTML = `<span class="song-title">${song.title}</span> by ${song.artist}`;
+        songList.innerHTML = `<span class="song-title">${song.title}</span> by ${song.artist}`; // using <span> to add a class name to a postion of the innerHTML
         ul.appendChild(songList);
       } else {
       }
     });
   }
-
-  //console.log(Object.values(guardians));
-  // Use the map() function to create playlists for each Guardian
 }
 
 // Call generatePlaylist and display the playlists for each Guardian
 generatePlaylist(guardians, newPlayList);
 
+// To remove the bullet style from the ul elements. I used a forEach method to target each ul and remove the list style.
 const allPlaylists = document.querySelectorAll("ul");
 allPlaylists.forEach((ul) => {
   ul.style.listStyle = "none";
